@@ -3,10 +3,21 @@
 require_once(dirname(__FILE__) . '/../../../../Vendor/Veritrans/Veritrans-php/Veritrans.php');
 
 use Cart;
+use hok00age\RajaOngkir;
 
 class CheckoutController extends FrontendController {
 
 	public function index()
+	{
+		$rajaOngkir = new RajaOngkir("d17256b1d6cb5da9539a286c4e0d6183");
+		$data['products'] = Cart::content();
+		$data['total'] = Cart::total();
+		$data['province'] = $rajaOngkir->getProvince()->body->rajaongkir->results;
+		$data['city'] = $rajaOngkir->getCity()->body->rajaongkir->results;
+		return $this->view('checkout.index', []);
+	}
+
+	public function pay()
 	{
 		\Veritrans_Config::$serverKey = '597bed2a-b11c-4976-ba85-743f54fadaec';
 		\Veritrans_Config::$isProduction = false;

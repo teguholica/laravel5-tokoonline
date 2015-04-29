@@ -15,7 +15,7 @@ class CartController extends FrontendController {
 
 	public function add()
 	{
-		Cart::add('293ad', 'Product 1', 1, 500000, array('size' => 'large'));
+		Cart::add('293ad', 'Product 1', 1, 1000, array('size' => 'large'));
 		return redirect()->route('frontend.cart');
 	}
 

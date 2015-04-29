@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "122f6de4e88450b0d3cc38e48b899379",
+    "hash": "02f469e26268494dbc4c750f5b3717ed",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -266,6 +266,42 @@
                 "shoppingcart"
             ],
             "time": "2015-02-19 14:36:24"
+        },
+        {
+            "name": "hok00age/rajaongkir",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hok00age/rajaongkir-php.git",
+                "reference": "93470ce7ec74b40c13724be667af249545538719"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hok00age/rajaongkir-php/zipball/93470ce7ec74b40c13724be667af249545538719",
+                "reference": "93470ce7ec74b40c13724be667af249545538719",
+                "shasum": ""
+            },
+            "require": {
+                "mashape/unirest-php": "~1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "hok00age\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Damar Riyadi",
+                    "email": "damar@tahutek.net"
+                }
+            ],
+            "description": "PHP client for consuming RajaOngkir API",
+            "time": "2015-01-22 03:09:25"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -661,6 +697,55 @@
                 "storage"
             ],
             "time": "2015-03-29 14:01:43"
+        },
+        {
+            "name": "mashape/unirest-php",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mashape/unirest-php.git",
+                "reference": "ff13801b7bc06a635054b3674a02588bd7d48be5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mashape/unirest-php/zipball/ff13801b7bc06a635054b3674a02588bd7d48be5",
+                "reference": "ff13801b7bc06a635054b3674a02588bd7d48be5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "vierbergenlars/simpletest": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Unirest": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mashape",
+                    "email": "support@mashape.com",
+                    "homepage": "http://mashape.com"
+                }
+            ],
+            "description": "Unirest PHP",
+            "homepage": "https://github.com/Mashape/unirest-php",
+            "keywords": [
+                "client",
+                "curl",
+                "http",
+                "rest"
+            ],
+            "time": "2014-04-05 23:28:21"
         },
         {
             "name": "monolog/monolog",
@@ -2919,7 +3004,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "gloudemans/shoppingcart": 20,
-        "veritrans/veritrans-php": 20
+        "veritrans/veritrans-php": 20,
+        "hok00age/rajaongkir": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

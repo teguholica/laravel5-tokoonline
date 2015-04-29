@@ -26,7 +26,7 @@ Route::group(['namespace' => 'Frontend'], function(){
 	Route::post('cart/update_all', ['as' => 'frontend.cart.updateAll', 'uses' => 'CartController@updateAll']);
 	Route::get('cart/remove/{rowId}', ['as' => 'frontend.cart.remove', 'uses' => 'CartController@remove']);
 	Route::get('cart/add/destroy', ['as' => 'frontend.cart.destroy', 'uses' => 'CartController@destroy']);
-	Route::get('checkout', ['as' => 'frontend.checkout', 'uses' => 'CheckoutController@index']);
+	Route::get('checkout', ['as' => 'frontend.checkout', 'uses' => 'CheckoutController@pay']);
 	Route::get('payment/finish', ['as' => 'frontend.payment.finish', 'uses' => 'PaymentController@finish']);
 	Route::get('payment/unfinish', ['as' => 'frontend.payment.unFinish', 'uses' => 'PaymentController@finish']);
 	Route::get('payment/error', ['as' => 'frontend.payment.error', 'uses' => 'PaymentController@finish']);
