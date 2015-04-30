@@ -2,6 +2,8 @@
 
 require_once(dirname(__FILE__) . '/../../../../Vendor/Veritrans/Veritrans-php/Veritrans.php');
 
+use Illuminate\Http\Request;
+
 use Cart;
 use hok00age\RajaOngkir;
 
@@ -14,10 +16,10 @@ class CheckoutController extends FrontendController {
 		$data['total'] = Cart::total();
 		$data['province'] = $rajaOngkir->getProvince()->body->rajaongkir->results;
 		$data['city'] = $rajaOngkir->getCity()->body->rajaongkir->results;
-		return $this->view('checkout.index', []);
+		return $this->view('checkout.index', $data);
 	}
 
-	public function pay()
+	public function pay(Request $request)
 	{
 		\Veritrans_Config::$serverKey = '597bed2a-b11c-4976-ba85-743f54fadaec';
 		\Veritrans_Config::$isProduction = false;
@@ -25,32 +27,32 @@ class CheckoutController extends FrontendController {
 
 		// Populate customer's billing address
 		$billing_address = array(
-		    'first_name'   => "Andri",
-		    'last_name'    => "Setiawan",
-		    'address'      => "Karet Belakang 15A, Setiabudi.",
-		    'city'         => "Jakarta",
-		    'postal_code'  => "51161",
-		    'phone'        => "081322311801",
+		    'first_name'   => $request->input('billingFirstName'),
+		    'last_name'    => $request->input('billingLastName'),
+		    'address'      => $request->input('billingAddress'),
+		    'city'         => $request->input('billingCity'),
+		    'postal_code'  => $request->input('billingPostalCode'),
+		    'phone'        => $request->input('billingPhone'),
 		    'country_code' => 'IDN'
 		  );
 
 		// Populate customer's shipping address
 		$shipping_address = array(
-		    'first_name'   => "John",
-		    'last_name'    => "Watson",
-		    'address'      => "Bakerstreet 221B.",
-		    'city'         => "Jakarta",
-		    'postal_code'  => "51162",
-		    'phone'        => "081322311801",
+		    'first_name'   => $request->input('shipmentFirstName'),
+		    'last_name'    => $request->input('shipmentLastName'),
+		    'address'      => $request->input('shipmentAddress'),
+		    'city'         => $request->input('shipmentCity'),
+		    'postal_code'  => $request->input('shipmentPostalCode'),
+		    'phone'        => $request->input('shipmentPhone'),
 		    'country_code' => 'IDN'
 		  );
 
 		// Populate customer's info
 		$customer_details = array(
-		    'first_name'       => "Anita",
-		    'last_name'        => "Sari",
-		    'email'            => "teguholica@gmail.com",
-		    'phone'            => "089671639390",
+		    'first_name'       => $request->input('customerFirstName'),
+		    'last_name'        => $request->input('customerLastName'),
+		    'email'            => $request->input('customerEmail'),
+		    'phone'            => $request->input('customerPhone'),
 		    'billing_address'  => $billing_address,
 		    'shipping_address' => $shipping_address
 		  );
@@ -74,6 +76,7 @@ class CheckoutController extends FrontendController {
 		      'gross_amount' => Cart::total(),
 		    ),
 		    'vtweb' => array(
+		    	'enabled_payments' => array($request->input('payment')),
 		    	'credit_card_3d_secure' => true,
 				'finish_redirect_url' => route('frontend.payment.finish'),
 				'unfinish_redirect_url' => route('frontend.payment.unFinish'),
